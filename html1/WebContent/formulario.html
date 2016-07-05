@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario de Contacto</title>
+</head>
+<body>
+	<h3>Rellena el formulario</h3>
+	<form name="datos" method="post" action="">
+		<table>
+			<tr>
+				<td>
+					<label for="nombre">NOMBRE</label>
+				</td>
+				<td>
+					<input type="text" name="nombre">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="contra">PASSWORD</label>
+				</td>
+				<td>
+					<input type="password" name="contra">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="ciudad">CIUDAD</label>
+				</td>
+				<td>
+					<select name="ciudad">
+						<option value="1">Madrid</option>
+						<option value="2">Ávila</option>
+						<option value="3">Cáceres</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Publicidad</td>
+				<td>
+					<input type="checkbox" name="publi">
+				</td>
+			</tr>
+			<tr>
+				<td>Coche propio</td>
+				<td>
+					<input type="radio" name="coche" value="1">Sí
+					<input type="radio" name="coche" value="2">No
+				</td>
+			</tr>
+			<tr>
+				<td>Observaciones</td>
+				<td>
+					<textarea rows="5" cols="20"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" name="enviar" value="enviar">
+				</td>
+				<td>
+					<input type="reset" name="limpiar" value="limpiar">
+				</td>
+			</tr>
+		</table>
+		
+		
+	</form>
+</body>
+</html>
