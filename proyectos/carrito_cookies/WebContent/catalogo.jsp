@@ -8,15 +8,21 @@
 </head>
 <body>
 	<h1>Catálogo de productos</h1>
-	<table>
-		<tr>
-			<th>Seleccionar</th>
-			<th>Artículo</th>
-			<th>Precio</th>
-		</tr>
-		<% List<Articulo> articulos = (List<Articulo>)request.getAttribute("articulos"); %>
-		<% for(int i=0; i<articulos.size(); i++){ %>
-		<% } %>
-	</table>
+	<h3>Seleccionar artículos</h3>
+		<% 
+			List<Articulo> articulos = (List<Articulo>)request.getAttribute("articulos"); 
+			String cod;
+		%>
+		<form name="datos" method="post" action="procesar.do">
+			<input type="hidden" name="num" value="<%=articulos.size()%>">
+			<% for (Articulo a: articulos) { 
+				cod = "ck" + a.getCodigo();
+			%> 
+				<input type="checkbox" name="ck" value="<%=cod%>">
+				<%=a.getDescripcion() %>&nbsp;<%= a.getImporte() %><br/>
+			<% } %>
+			<input type="submit" value="enviar">
+		</form>
+		
 </body>
 </html>
