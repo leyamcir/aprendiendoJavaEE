@@ -38,10 +38,11 @@ public class Controlador extends HttpServlet {
 		try {
 			cliente.conectar("root", "root");
 			List<Cliente> clientes = cliente.leerTodos();
-			request.setAttribute("listaClientes", clientes);
+			request.setAttribute("clientes", clientes);
 			RequestDispatcher rq = request.getRequestDispatcher("clientes.jsp");
 			rq.forward(request, response);
 		} catch (DAOException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 	}
