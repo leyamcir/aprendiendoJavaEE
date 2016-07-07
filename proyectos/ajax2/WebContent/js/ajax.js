@@ -28,18 +28,13 @@ function cargarAJAX(url) {
 }
 
 function funcionProcesamiento() {
-
 	if (http_request.readyState == 4) { // Carga completada:
 		if (http_request.status == 200) { // OK
-			var nuevoTitulo;
+
 			// Respuesta del Servidor:
 			var content = http_request.responseText;
-			// Obtengo la información deseada:
-			//var nodoTitulo = xmldoc.getElementsByTagName('titulo').item(0);
-			//nuevoTitulo = nodoTitulo.firstChild.nodeValue;
-			// Se accede al árbol DOM del documento (mi página) y se cambia el
-			// título:
-			document.getElementById('capa').innerHTML = content;
+			var capa = document.getElementById('capa');
+			capa.innerHTML = content;
 		} else
 			window.alert("respuesta del Servidor: " + http_request.status);
 	}
