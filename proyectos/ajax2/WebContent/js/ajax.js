@@ -41,7 +41,6 @@ function funcionProcesamiento() {
 }
 
 function agregar() {
-	var capa = document.getElementById('capa');
 	var f = document.getElementById('fichero').value;
 
 	cargarAJAX(f);
