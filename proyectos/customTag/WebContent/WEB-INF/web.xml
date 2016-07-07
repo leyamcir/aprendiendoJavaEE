@@ -14,7 +14,12 @@
         <taglib>
             <taglib-uri>/myTLD</taglib-uri>
             <taglib-location>/WEB-INF/taglib.tld</taglib-location>
-        </taglib>  
+        </taglib> 
+        
+        <taglib>
+            <taglib-uri>/SumaTLD</taglib-uri>
+            <taglib-location>/WEB-INF/taglibSuma.tld</taglib-location>
+        </taglib>   
     </jsp-config>
   
 </web-app>
