@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>PRACTICA DE AJAX</title>
+<script type="text/javascript" src="util.js"></script>
+</head>
+<body onload="motorAjax()">
+	<div id="contenedor">
+		<p>SELECCIONAR EL NOMBRE DEL FICHERO</p>
+		<p>
+			<select id="selector">
+				<option value="fichero1.txt">fichero1.txt</option>
+				<option value="fichero2.txt">fichero2.txt</option>
+				<option value="fichero3.txt">fichero3.txt</option>		
+			</select>
+		</p>	
+		<div><input type="button" id="cambia" value="cambia" onclick="solicitarTexto()"></input></div>
+		<div id="contenidoTexto" style="border: 1px solid black; width: 400px; height: 200px"></div>
+	</div>
+</body>
+</html>
