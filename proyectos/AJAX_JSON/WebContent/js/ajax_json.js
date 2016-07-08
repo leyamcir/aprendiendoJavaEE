@@ -34,16 +34,36 @@ function funcionProcesamiento(){
 			var nuevoTitulo;
 //			Respuesta del Servidor:
 			var json_doc = http_request.responseText;
-			console.log(json_doc);
+			//console.log(json_doc);
 
-//			Obtengo la información deseada:
 			var datos = eval("(" + json_doc + ")");
-			console.log(".- id: " + datos.menu.id);
-			console.log(".- valor: " + datos.menu.valor);
-			
-			for (var i=0; i < datos.menu.popup.menuitem.length; i++)
-				console.log(datos.menu.popup.menuitem[i].id + " = " + datos.menu.popup.menuitem[0].value);
+			procesarRespuesta(datos)
 		} else
-			window.console.log("respuesta del Servidor: " + http_request.status);
+			muestraError(http_request.status);
 	}
+}
+
+function procesarRespuesta(datos) {
+//	Obtengo la información deseada:
+	console.log(datos);
+	console.log(".- id: " + datos.menu.id);
+	console.log(".- valor: " + datos.menu.valor);
+	
+	for (var i=0; i < datos.menu.popup.menuitem.length; i++)
+		console.log(datos.menu.popup.menuitem[i].id + " = " + datos.menu.popup.menuitem[0].value);
+}
+
+function muestraError(error){
+	console.log("respuesta del Servidor: " + error);
+}
+
+function cargarAJAX2(url) {
+	$.ajax({ 
+		url: url,
+		type: 'POST',
+		async: true,
+		//data: 'parametro1=valor1&parametro2=valor2',
+		success: procesarRespuesta,
+		error: muestraError 
+	});
 }
