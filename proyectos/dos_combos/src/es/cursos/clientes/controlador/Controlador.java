@@ -64,22 +64,17 @@ public class Controlador extends HttpServlet {
 		RequestDispatcher rq;
 		String pais = request.getParameter("pais");
 		try{
-			// Primera vez, cargar TODOS los países
-			List<String> paises = clienteDAO.getPaises();
-			request.setAttribute("paises", paises);
 			
 			PrintWriter out;
 			
 			if (pais == null) {
+				// Primera vez, cargar TODOS los países
+				List<String> paises = clienteDAO.getPaises();
+				request.setAttribute("paises", paises);
 				rq = request.getRequestDispatcher("combos.jsp");
 				rq.forward(request, response);
-			} else {
-			
+			} else {			
 				// Ha cambiado el país, cargar clientes de ese país
-				
-				//out = response.getWriter();
-			//	out.print("hola");
-			//	out.close();
 				List<Cliente> clientes = clienteDAO.clientesEnPais(pais);
 				request.setAttribute("clientes", clientes);
 				rq = request.getRequestDispatcher("combo_cliente.jsp");

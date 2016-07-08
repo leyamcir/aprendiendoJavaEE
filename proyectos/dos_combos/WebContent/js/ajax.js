@@ -11,9 +11,8 @@ function cargarAJAX(pais) {
 		url: 'init.do',
 		type: 'POST',
 		async: true,
-		data: 'pais='+pais,
+		data: 'pais=' + pais,
 		success: procesarRespuesta,
 		error: mostrarError 
 	});
-	
 }
