@@ -7,7 +7,9 @@
 
 	<!-- Indicar que queremos usar inyección con anotaciones -->
 	<context:annotation-config/>
-	
+	<!-- Anotar clases. Deben estar anotadas como @Component -->
+	<context:component-scan base-package="es.curso.coche"></context:component-scan>
+	<!-- 
 	<bean id="motorObj" class="es.curso.coche.Motor">
 		<property name="tipo" value="diesel"></property>
 		<property name="potencia" value="1800"></property>
@@ -18,4 +20,5 @@
 	</bean>
 	
 	<bean id="coche" class="es.curso.coche.Coche"></bean>
+	 -->
 </beans>

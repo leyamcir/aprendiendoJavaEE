@@ -1,8 +1,16 @@
 package es.curso.coche;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+// Utiliza convención de nombres
+// Motor --> motor
+@Component
 public class Motor {
 	
+	@Value("Diesel")
 	private String tipo;
+	@Value("3000")
 	private int potencia;
 	
 	public String getTipo() {
