@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Definir una figura genérica -->
+	<bean id="figura" class="es.cursos.figuras.Figura" abstract="true">
+		<property name="nombre" value="figura generica"></property>
+	</bean>
+	
+	<!-- Definir un círculo heredando de figura -->
+	<bean id="circulo" class="es.cursos.figuras.Circulo" parent="figura">
+		<!-- <property name="nombre" value="miCirculo"></property>-->
+		<property name="radio" value="20"></property>
+	</bean>
+	
+	<!-- Definir un triángulo heredando de figura -->
+	<bean id="triangulo" class="es.cursos.figuras.Triangulo" parent="figura">
+		<!--<property name="nombre" value="miTriangulo"></property>-->
+		<property name="base" value="10"></property>
+		<property name="altura" value="5"></property>
+	</bean>
+
+</beans>
