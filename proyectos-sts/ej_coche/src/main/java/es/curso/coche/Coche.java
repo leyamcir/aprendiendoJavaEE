@@ -40,6 +40,16 @@ public class Coche {
 	public void setRadio(Radio radio) {
 		this.radio = radio;
 	}
+	
+	// Método de inicialización
+	public void init(){
+		System.out.println("Método de inicialización");
+	}
+	
+	// Método de destrucción
+	public void destroy(){
+		System.out.println("Método de destrucción");
+	}
 
 	@Override
 	public String toString() {

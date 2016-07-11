@@ -20,7 +20,7 @@
 	<!-- si no, se queda a null -->
 	<bean id="cocheObj2" class="es.curso.coche.Coche" autowire="byName"/>
 	
-	
-	<bean id="cocheObj1" class="es.curso.coche.Coche" autowire="byType">
-	</bean>
+	<!-- Init y destroy deben ser métodos sin parámetros -->
+	<bean id="cocheObj1" class="es.curso.coche.Coche" autowire="byType" 
+		init-method="init" destroy-method="destroy"/>
 </beans>
