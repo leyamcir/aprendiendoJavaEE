@@ -15,9 +15,11 @@ public static void main(String[] args) {
 		context = new ClassPathXmlApplicationContext("applicationContext2.xml");
 		
 		
-		// Otra forma de hacer el casting
 		Coche c2 = context.getBean("cocheObj2", Coche.class);
 		System.out.println(c2);
+		
+		Coche c1 = context.getBean("cocheObj1", Coche.class);
+		System.out.println(c1);
 		
 		// Cerrar el contexto
 		((ClassPathXmlApplicationContext)context).close();

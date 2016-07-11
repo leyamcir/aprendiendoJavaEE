@@ -6,18 +6,21 @@
 
 
 	
-	<bean id="motor" class="es.curso.coche.Motor">
+	<bean id="motor1" class="es.curso.coche.Motor">
 		<property name="tipo" value="Gasolina"></property>
 		<property name="potencia" value="2000"></property>
 	</bean>
 	
-	<bean id="radio" class="es.curso.coche.Radio">
+	<bean id="radio1" class="es.curso.coche.Radio">
 		<property name="marca" value="Pionner"></property>
 	</bean>
 	 
 	<!-- Conexión automática por nombre -->
 	<!-- Busca beans con el mismo id que el nombre de las propiedades -->
 	<!-- si no, se queda a null -->
-	<bean id="cocheObj2" class="es.curso.coche.Coche" autowire="byName">
+	<bean id="cocheObj2" class="es.curso.coche.Coche" autowire="byName"/>
+	
+	
+	<bean id="cocheObj1" class="es.curso.coche.Coche" autowire="byType">
 	</bean>
 </beans>
