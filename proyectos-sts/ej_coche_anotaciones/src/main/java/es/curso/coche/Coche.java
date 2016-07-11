@@ -1,12 +1,14 @@
 package es.curso.coche;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Coche {
 	
-	@Autowired
+	@Resource
 	private Motor motor;
-	@Autowired
+	@Resource
 	private Radio radio;
 	
 	// La clase Coche recibe las dependencias YA CREADAS!!
