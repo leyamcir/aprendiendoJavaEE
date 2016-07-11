@@ -42,7 +42,7 @@
 	 	p:motor-ref="motorObj" p:radio-ref="radioObj"></bean>
 	 
 	<!-- Inyección por CONSTRUCTOR -->
-	<bean id="cocheObj2" class="es.curso.coche.Coche">
+	<bean id="cocheObj2" class="es.curso.coche.Coche" depends-on="motorObj2,radioObj2">
 		<constructor-arg name="motor" ref="motorObj2"></constructor-arg>
 		<constructor-arg name="radio" ref="radioObj2"></constructor-arg>
 	</bean>
