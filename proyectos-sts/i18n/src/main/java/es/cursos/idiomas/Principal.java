@@ -13,9 +13,10 @@ ApplicationContext context;
 		
 		// Cargar el contexto de Spring
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+		String[] param = new String[] {"pepe"};
 		
 		String pru = context.getMessage("mensaje", null, Locale.FRANCE);
-		String[] param = new String[] {"pepe"};
 		pru += "\n "+ context.getMessage("mostrarnombre", param, Locale.FRANCE);
 		System.out.println("FRANCE: " + pru);
 		
