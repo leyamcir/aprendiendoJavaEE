@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="motorObj" class="es.curso.coche.Motor">
+		<property name="tipo" value="diesel"></property>
+		<property name="potencia" value="1800"></property>
+	</bean>
+	
+	<bean id="radioObj" class="es.curso.coche.Radio">
+		<property name="marca" value="Sony"></property>
+	</bean>
+	
+	<bean id="motorObj2" class="es.curso.coche.Motor">
+		<property name="tipo" value="Gasolina"></property>
+		<property name="potencia" value="2000"></property>
+	</bean>
+	
+	<bean id="radioObj2" class="es.curso.coche.Radio">
+		<property name="marca" value="Pionner"></property>
+	</bean>
+
+	<!-- Inyección por SETTER -->
+	<bean id="cocheObj" class="es.curso.coche.Coche">
+		<property name="motor" ref="motorObj"></property>
+		<property name="radio" ref="radioObj"></property>
+	</bean>
+	
+	<!-- Inyección por CONSTRUCTOR -->
+	<bean id="cocheObj2" class="es.curso.coche.Coche">
+		<constructor-arg name="motor" ref="motorObj2"></constructor-arg>
+		<constructor-arg name="radio" ref="radioObj2"></constructor-arg>
+	</bean>
+</beans>
