@@ -6,7 +6,7 @@ public class Coche {
 	private Motor motor;
 	private Radio radio;
 	
-	// La clase Coche recibe las dependencias YA CREADAS
+	// La clase Coche recibe las dependencias YA CREADAS!!
 	
 	// DOS formas de inyectar dependencias:
 	
@@ -21,6 +21,7 @@ public class Coche {
 
 	public Coche() {
 		super();
+		System.out.println("CREANDO EL COCHE");
 	}
 	
 

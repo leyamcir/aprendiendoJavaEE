@@ -22,7 +22,7 @@
 	</bean>
 
 	<!-- Inyección por SETTER -->
-	<bean id="cocheObj" class="es.curso.coche.Coche">
+	<bean id="cocheObj" class="es.curso.coche.Coche" scope="prototype">
 		<property name="motor" ref="motorObj"></property>
 		<property name="radio" ref="radioObj"></property>
 	</bean>
