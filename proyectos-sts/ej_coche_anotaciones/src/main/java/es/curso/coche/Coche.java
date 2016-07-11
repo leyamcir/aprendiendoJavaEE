@@ -1,5 +1,7 @@
 package es.curso.coche;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +55,18 @@ public class Coche {
 	}
 	
 	// Método de inicialización
+	@PostConstruct
 	public void init(){
 		System.out.println("Método de inicialización");
 	}
 	
+	@PostConstruct
+	public void init2(){
+		System.out.println("Método de inicialización 2");
+	}
+	
 	// Método de destrucción
+	@PreDestroy
 	public void destroy(){
 		System.out.println("Método de destrucción");
 	}
