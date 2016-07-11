@@ -3,6 +3,7 @@ package es.curso.coche;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
@@ -11,7 +12,9 @@ public class Coche {
 	
 	@Resource
 	private Motor motor;
-	@Resource
+	
+	@Autowired
+	@Qualifier("radioObj")
 	private Radio radio;
 	
 	// La clase Coche recibe las dependencias YA CREADAS!!

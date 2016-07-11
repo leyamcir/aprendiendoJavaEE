@@ -9,6 +9,13 @@
 	<context:annotation-config/>
 	<!-- Anotar clases. Deben estar anotadas como @Component -->
 	<context:component-scan base-package="es.curso.coche"></context:component-scan>
+	
+	<bean id="radioObj" class="es.curso.coche.Radio">
+		<property name="marca" value="Sony"></property>
+	</bean>
+	<bean id="radioObj2" class="es.curso.coche.Radio">
+		<property name="marca" value="Sony"></property>
+	</bean>
 	<!-- 
 	<bean id="motorObj" class="es.curso.coche.Motor">
 		<property name="tipo" value="diesel"></property>
