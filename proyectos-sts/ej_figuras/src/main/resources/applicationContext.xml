@@ -10,7 +10,7 @@
 	
 	<!-- Definir un círculo heredando de figura -->
 	<bean id="circulo" class="es.cursos.figuras.Circulo" parent="figura">
-		<!-- <property name="nombre" value="miCirculo"></property>-->
+		<property name="nombre" value="miCirculo"></property>
 		<property name="radio" value="20"></property>
 	</bean>
 	
