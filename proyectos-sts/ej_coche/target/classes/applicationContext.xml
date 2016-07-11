@@ -4,14 +4,22 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<!-- Usando el acceso a propiedades con p: -->
+	<bean id="motorObj" class="es.curso.coche.Motor"
+		p:potencia="1800" p:tipo="diesel"/>
+		
+	<bean id="radioObj" class="es.curso.coche.Radio"
+		p:marca="Sony"/>
+
+	<!--  
 	<bean id="motorObj" class="es.curso.coche.Motor">
 		<property name="tipo" value="diesel"></property>
 		<property name="potencia" value="1800"></property>
 	</bean>
-	
 	<bean id="radioObj" class="es.curso.coche.Radio">
 		<property name="marca" value="Sony"></property>
 	</bean>
+	-->
 	
 	<bean id="motorObj2" class="es.curso.coche.Motor">
 		<property name="tipo" value="Gasolina"></property>
@@ -23,11 +31,16 @@
 	</bean>
 
 	<!-- Inyección por SETTER -->
+	<!-- 
 	<bean id="cocheObj" class="es.curso.coche.Coche" scope="prototype">
 		<property name="motor" ref="motorObj"></property>
 		<property name="radio" ref="radioObj"></property>
 	</bean>
-	
+	 -->
+	 
+	 <bean id="cocheObj" class="es.curso.coche.Coche"
+	 	p:motor-ref="motorObj" p:radio-ref="radioObj"></bean>
+	 
 	<!-- Inyección por CONSTRUCTOR -->
 	<bean id="cocheObj2" class="es.curso.coche.Coche">
 		<constructor-arg name="motor" ref="motorObj2"></constructor-arg>
