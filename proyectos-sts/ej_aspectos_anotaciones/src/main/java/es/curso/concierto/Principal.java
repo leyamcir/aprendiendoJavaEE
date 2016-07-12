@@ -9,7 +9,7 @@ public class Principal {
 
 		ApplicationContext context;
 		
-		context = new ClassPathXmlApplicationContext("applicationContext2.xml");
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		Concierto musicoBateria = (Concierto) context.getBean("musicoBateria");
 		Concierto musicoGuitarra = (Concierto) context.getBean("musicoGuitarra");
