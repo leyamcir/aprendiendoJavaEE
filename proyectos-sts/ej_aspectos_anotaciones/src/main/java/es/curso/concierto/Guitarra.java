@@ -1,5 +1,8 @@
 package es.curso.concierto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Guitarra implements Instrumento {
 
 	public void tocar() {

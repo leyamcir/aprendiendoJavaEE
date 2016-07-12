@@ -11,9 +11,9 @@ public class Principal {
 		
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		Concierto musicoBateria = (Concierto) context.getBean("musicoBateria");
-		Concierto musicoGuitarra = (Concierto) context.getBean("musicoGuitarra");
-		Concierto musicoBajo = (Concierto) context.getBean("musicoBajo");
+		Concierto musicoBateria = (Concierto) context.getBean("musico");
+		//Concierto musicoGuitarra = (Concierto) context.getBean("musicoGuitarra");
+	//	Concierto musicoBajo = (Concierto) context.getBean("musicoBajo");
 		
 		try {
 			musicoBateria.actuar();
@@ -22,7 +22,7 @@ public class Principal {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+/*		
 		try {
 			musicoGuitarra.actuar();
 			musicoGuitarra.evaluacion("info: Ana Gomez");
@@ -38,7 +38,7 @@ public class Principal {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+		*/
 		((ClassPathXmlApplicationContext) context).close();
 
 	}
