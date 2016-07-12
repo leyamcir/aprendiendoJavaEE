@@ -1,5 +1,7 @@
 package es.curso.spring;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
@@ -19,13 +21,19 @@ public class Main {
 		int val = (Integer) exp.getValue();
 		System.out.println(val);
 		
-		Usuario usuario = new Usuario("Jose Gonzalez");
+		Usuario usuario = new Usuario("Jose", "Gonzalez");
 		EvaluationContext contexto = new StandardEvaluationContext(usuario);
 		
 		Expression expresion = parser.parseExpression("nombre");
 		String nombreUsuario = expresion.getValue(contexto, String.class);
 		System.out.println(nombreUsuario);
 		
+		// Prueba en xml
+		ApplicationContext contexto2 = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Usuario usr = (Usuario) contexto2.getBean("user2", Usuario.class);
+		System.out.println(usr);
+		
+		((ClassPathXmlApplicationContext) contexto2).close();
 		
 	}
 
