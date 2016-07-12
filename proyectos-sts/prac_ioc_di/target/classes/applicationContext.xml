@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="lista" class="es.cursos.carpetas.Listas">
+		<property name="carpetas">
+			<list>
+				
+				<value>Imagenes</value>
+				<list>
+					<value>BMP</value>
+						<list>
+							<value>Iconos</value>
+							<value>Logotipos</value>
+						</list>
+					<value>PNG</value>
+					<value>GIF</value>
+					<value>JPG</value>
+				</list>
+				<value>Sonido</value>
+				<list>
+					<value>MP3</value>
+					<value>MP4</value>
+				</list>
+				<value>Video</value>
+				<list>
+					<value>AVI</value>
+					<value>JPEG</value>
+				</list>
+			</list>
+		</property>
+	</bean>
+</beans>
