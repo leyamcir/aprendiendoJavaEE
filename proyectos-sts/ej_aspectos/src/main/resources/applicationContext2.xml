@@ -27,13 +27,14 @@
 	
 	
 	<aop:config>
+		<aop:pointcut expression="execution(* es.curso.concierto.Concierto.actuar(..))" id="pc"/>
 		<aop:aspect ref="publico">
 			<aop:before method="apagarTelefonos" 
-				pointcut="execution(* es.curso.concierto.Concierto.actuar(..))"/>
+				pointcut-ref="pc"/>
 			<aop:after-returning method="aplaudir" 
-				pointcut="execution(* es.curso.concierto.Concierto.actuar(..))"/>
+				pointcut-ref="pc"/>
 			<aop:after-throwing method="abuchear"
-				pointcut="execution(* es.curso.concierto.Concierto.actuar(..))"/>
+				pointcut-ref="pc"/>
 		</aop:aspect>
 		
 	
