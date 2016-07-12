@@ -6,10 +6,17 @@
 	<bean id="user1" class="es.curso.spring.Usuario">
 		<property name="nombre" value="Pedro"></property>
 		<!-- <property name="apellidos" value="Ruiz"></property> -->
+		<property name="telefonos">
+			<list>
+				<value>600-95-21-85</value>
+				<value>456-53-04-72</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="user2" class="es.curso.spring.Usuario">
 		<property name="nombre" value="#{user1.nombre}"></property>
 		<property name="apellidos" value="#{user1.apellidos?.toUpperCase()}"></property>
+		<property name="telefonos" value="#{user1.telefonos}"></property>
 	</bean>
 </beans>
