@@ -4,15 +4,15 @@ import org.aspectj.lang.ProceedingJoinPoint;
 
 public class Publico {
 
-	private void aplaudir(){
+	public void aplaudir(){
 		System.out.println("El público está aplaudiendo");
 	}
 	
-	private void apagarTelefonos() {
+	public void apagarTelefonos() {
 		System.out.println("El público apaga sus teléfonos");
 	}
 	
-	private void abuchear(){
+	public void abuchear(){
 		System.out.println("Buuuuu, Fueraaaaa");
 	}
 	
