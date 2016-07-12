@@ -9,4 +9,8 @@ public class Publico {
 	private void apagarTelefonos() {
 		System.out.println("El público apaga sus teléfonos");
 	}
+	
+	private void abuchear(){
+		System.out.println("Buuuuu, Fueraaaaa");
+	}
 }

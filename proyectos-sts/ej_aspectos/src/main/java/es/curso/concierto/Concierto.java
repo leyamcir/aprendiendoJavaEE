@@ -2,5 +2,5 @@ package es.curso.concierto;
 
 public interface Concierto {
 	
-	public void actuar();
+	public void actuar() throws Exception;
 }

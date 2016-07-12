@@ -12,7 +12,11 @@ public class Musico implements Concierto {
 		this.instrumento = instrumento;
 	}
 
-	public void actuar() {
+	public void actuar() throws Exception {
+		if(instrumento instanceof Guitarra){
+			throw new Exception("La guitarra se fue a la pu...");
+		}
+			
 		instrumento.tocar();
 	}
 

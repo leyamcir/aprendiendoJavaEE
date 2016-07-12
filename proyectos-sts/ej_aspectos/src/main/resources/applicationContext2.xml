@@ -32,6 +32,8 @@
 				pointcut="execution(* es.curso.concierto.Concierto.actuar(..))"/>
 			<aop:after-returning method="aplaudir" 
 				pointcut="execution(* es.curso.concierto.Concierto.actuar(..))"/>
+			<aop:after-throwing method="abuchear"
+				pointcut="execution(* es.curso.concierto.Concierto.actuar(..))"/>
 		</aop:aspect>
 		
 	

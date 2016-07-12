@@ -15,9 +15,13 @@ public class Principal {
 		Concierto musicoGuitarra = (Concierto) context.getBean("musicoGuitarra");
 		Concierto musicoBajo = (Concierto) context.getBean("musicoBajo");
 		
-		musicoBateria.actuar();
-		musicoGuitarra.actuar();
-		musicoBajo.actuar();
+		try {
+			musicoBateria.actuar();
+			musicoGuitarra.actuar();
+			musicoBajo.actuar();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 		((ClassPathXmlApplicationContext) context).close();
 
