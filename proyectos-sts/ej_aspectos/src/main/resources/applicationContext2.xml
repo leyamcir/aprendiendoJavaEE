@@ -40,10 +40,11 @@
 	 -->
 	 
 	 <aop:config>
+	 	<aop:pointcut expression="execution(* es.curso.concierto.Concierto.evaluacion(..)) and args(info)" id="pc_info"/>
 		<aop:pointcut expression="execution(* es.curso.concierto.Concierto.actuar(..))" id="pc"/>
 		<aop:aspect ref="publico">
-			<aop:around method="verActuacion" 
-				pointcut-ref="pc"/>
+			<aop:around method="verActuacion" pointcut-ref="pc"/>
+			<aop:before method="recibirInfo" pointcut-ref="pc_info" arg-names="info"/>
 		</aop:aspect>
 	</aop:config>
 </beans>

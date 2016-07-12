@@ -3,6 +3,7 @@ package es.curso.concierto;
 public class Musico implements Concierto {
 	
 	private Instrumento instrumento;
+	private String info;
 	
 	public Instrumento getInstrumento() {
 		return instrumento;
@@ -18,6 +19,11 @@ public class Musico implements Concierto {
 		}
 			
 		instrumento.tocar();
+	}
+
+	public void evaluacion(String info) {
+		this.info = info;
+		
 	}
 
 	

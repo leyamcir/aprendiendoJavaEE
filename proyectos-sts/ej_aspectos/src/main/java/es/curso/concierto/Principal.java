@@ -17,8 +17,24 @@ public class Principal {
 		
 		try {
 			musicoBateria.actuar();
+			musicoBateria.evaluacion("info: Juan Gomez");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		try {
 			musicoGuitarra.actuar();
+			musicoGuitarra.evaluacion("info: Ana Gomez");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		try {
 			musicoBajo.actuar();
+			musicoBajo.evaluacion("info: Pepe Gomez");
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

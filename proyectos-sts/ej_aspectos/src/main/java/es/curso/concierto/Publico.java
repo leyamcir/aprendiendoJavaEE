@@ -16,6 +16,10 @@ public class Publico {
 		System.out.println("Buuuuu, Fueraaaaa");
 	}
 	
+	public void recibirInfo(String info){
+		System.out.println("Información para el público: " + info);
+	}
+	
 	public void verActuacion(ProceedingJoinPoint joinpoint) { 
 		try { 
 			// Tareas que queremos hacer antes del método: 
@@ -23,9 +27,7 @@ public class Publico {
 			System.out.println("The audience is turning off their cellphones"); 
 			long start = System.currentTimeMillis(); 
 			
-			joinpoint.proceed(); 
-			joinpoint.proceed(); 
-			joinpoint.proceed(); 
+			joinpoint.proceed();
 			
 			// OJO, en este caso tenemos que lanzar la ejecución del método. 
 			// en este caso es el método perform(). 
