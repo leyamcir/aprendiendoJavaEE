@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="user1" class="com.ejemplo.spring.User">
+		<property name="name" value="pepe"></property>
+		<property name="edad" value="54"></property>
+		<property name="country" value="España"></property>	
+	</bean>
+	
+	<bean id="user2" class="com.ejemplo.spring.User">
+		<property name="name" value="Ana"></property>
+		<property name="edad" value="34"></property>
+		<property name="country" value="España"></property>	
+	</bean>
+	
+	<bean id="user3" class="com.ejemplo.spring.User">
+		<property name="name" value="Eva"></property>
+		<property name="edad" value="14"></property>
+		<property name="country" value="España"></property>	
+	</bean>	
+	
+	<bean id="listaUsers" class="com.ejemplo.spring.ListaUsers">
+		<property name="usuarios">
+			<list>
+				<ref bean="user1"/>
+				<ref bean="user2"/>
+				<ref bean="user3"/>
+			</list>
+		</property>
+		<property name="lista2">
+			<list>
+				<bean class="com.ejemplo.spring.User">
+					<property name="name" value="Andres"></property>
+					<property name="edad" value="22"></property>
+					<property name="country" value="Belgica"></property>
+				</bean>
+				<bean class="com.ejemplo.spring.User">
+					<property name="name" value="Belen"></property>
+					<property name="edad" value="27"></property>
+					<property name="country" value="Francia"></property>
+				</bean>
+			</list>		
+		</property>
+	</bean>
+	
+	<!-- 
+		Rellenar la declaración del bean Entidad:
+		usuario = al primer elemento de la lista de usuarios del bean listaUser. 
+		nombreUsuarios = los nombres de todos los usuarios de lista2 del bean listaUser
+		mayores18 = los mayores de 18 años de la primera coleccion.
+		mayor el último de los mayores de 18 de años..
+	-->
+	<bean id="entidad" class="com.ejemplo.spring.Entidad">
+		<property name="usuario" value="#{listaUsers.usuarios[0]}"></property>
+		<property name="nombreUsuarios" value="#{listaUsers.lista2.![name]}"></property>
+		<property name="mayores18" value="#{listaUsers.usuarios.?[edad gt 18]}"></property>
+		<property name="mayor" value="#{listaUsers.usuarios.$[edad gt 18]}"></property>
+	</bean>
+	
+</beans>
