@@ -25,7 +25,7 @@
 	
 	<bean id="publico" class="es.curso.concierto.Publico"></bean>
 	
-	
+	<!-- 
 	<aop:config>
 		<aop:pointcut expression="execution(* es.curso.concierto.Concierto.actuar(..))" id="pc"/>
 		<aop:aspect ref="publico">
@@ -36,7 +36,14 @@
 			<aop:after-throwing method="abuchear"
 				pointcut-ref="pc"/>
 		</aop:aspect>
-		
-	
+	</aop:config>
+	 -->
+	 
+	 <aop:config>
+		<aop:pointcut expression="execution(* es.curso.concierto.Concierto.actuar(..))" id="pc"/>
+		<aop:aspect ref="publico">
+			<aop:around method="verActuacion" 
+				pointcut-ref="pc"/>
+		</aop:aspect>
 	</aop:config>
 </beans>
