@@ -5,11 +5,11 @@
 
 	<bean id="user1" class="es.curso.spring.Usuario">
 		<property name="nombre" value="Pedro"></property>
-		<property name="apellidos" value="Ruiz"></property>
+		<!-- <property name="apellidos" value="Ruiz"></property> -->
 	</bean>
 	
 	<bean id="user2" class="es.curso.spring.Usuario">
 		<property name="nombre" value="#{user1.nombre}"></property>
-		<property name="apellidos" value="#{user1.apellidos}"></property>
+		<property name="apellidos" value="#{user1.apellidos?.toUpperCase()}"></property>
 	</bean>
 </beans>
