@@ -19,7 +19,7 @@ public class Principal {
 		// Probar los métodos
 		
 		// Insert
-		Trabajador ti = new Trabajador(0, "458", "Pepa", "Restauración");
+		Trabajador ti = new Trabajador(0, "459", "Lucía", "Marketing");
 		int n = dao.save(ti);
 		System.out.println(n);
 		
