@@ -27,6 +27,7 @@ public class Principal {
 		}
 		
 		// Llamada a funciones
+		// Aquí no se puede usar ?
 		
 		sql = "SELECT calcularIVA(100,21)";
 		SqlFunction f = new SqlFunction(ds, sql);
