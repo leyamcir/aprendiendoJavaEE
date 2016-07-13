@@ -46,21 +46,7 @@ public class Principal {
 		// Get product from DB whith anonymous class
 		sql = "SELECT * FROM productos WHERE id=?";
 		Producto prod = template.queryForObject(sql, new Object[]{1}, 
-			new RowMapper<Producto>() {
-				
-				@Override
-				public Producto mapRow(ResultSet result, int numResult) throws SQLException {
-					Producto p = new Producto();
-					
-					p.setId(result.getInt("id"));
-					p.setNombre(result.getString("nombre"));
-					p.setIdCategoria(result.getInt("idcategoria"));
-					p.setPrecio(result.getDouble("precio"));						
-					p.setExistencias(result.getInt("existencias"));
-					
-					return p;
-				}
-			});
+			new ProductoMapper());
 		
 		System.out.println(prod);
 		
@@ -68,21 +54,7 @@ public class Principal {
 		// Get products collection
 		sql = "SELECT * FROM productos WHERE precio BETWEEN ? AND ?";
 		List<Producto> productos = template.query(sql, new Object[] {50, 100}, 
-				new RowMapper<Producto>() {
-					
-					@Override
-					public Producto mapRow(ResultSet result, int numResult) throws SQLException {
-						Producto p = new Producto();
-						
-						p.setId(result.getInt("id"));
-						p.setNombre(result.getString("nombre"));
-						p.setIdCategoria(result.getInt("idcategoria"));
-						p.setPrecio(result.getDouble("precio"));						
-						p.setExistencias(result.getInt("existencias"));
-						
-						return p;
-					}
-				});
+				new ProductoMapper());
 		System.out.println("Lista de productos");
 		
 		for (Producto p: productos) {
