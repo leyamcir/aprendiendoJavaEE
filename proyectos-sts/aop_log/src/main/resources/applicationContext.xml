@@ -24,8 +24,12 @@
 	
 	<aop:config>
 		<aop:aspect ref="log">
-			<aop:pointcut expression="execution(* es.curso.app.modelo.dao.ITrabajadorDAO.save(..)) and args(t)" id="pc"/>
-			<aop:after-returning method="grabarLog" pointcut-ref="pc" arg-names="t"/>
+			<aop:pointcut expression="execution(* es.curso.app.modelo.dao.ITrabajadorDAO.save(..)) and args(t)" id="savepc"/>
+			<aop:after-returning method="grabarLog" pointcut-ref="savepc" arg-names="t"/>
+		</aop:aspect>
+		<aop:aspect ref="log">
+			<aop:pointcut expression="execution(* es.curso.app.modelo.dao.ITrabajadorDAO.delete(..)) and args(n)" id="deletepc"/>
+			<aop:after-returning method="borrarLog" pointcut-ref="deletepc" arg-names="n"/>
 		</aop:aspect>
 	</aop:config>
 	

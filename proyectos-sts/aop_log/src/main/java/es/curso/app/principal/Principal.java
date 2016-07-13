@@ -19,14 +19,14 @@ public class Principal {
 		// Probar los métodos
 		
 		// Insert
-		Trabajador ti = new Trabajador(0, "459", "Lucía", "Marketing");
+		Trabajador ti = new Trabajador(0, "460", "Pepa", "Restauración");
 		int n = dao.save(ti);
 		System.out.println(n);
 		
 		// Delete
-		//int deleteTrabajador = 98;
-		//int n = dao.delete(deleteTrabajador);
-		//System.out.println("Borrado: "+n);
+		int deleteTrabajador = 102;
+		int numDelete = dao.delete(deleteTrabajador);
+		System.out.println("Borrado: "+numDelete);
 		
 		// SELECT ONE
 		int selectTrabajador = 97;
