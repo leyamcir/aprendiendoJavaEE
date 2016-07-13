@@ -11,14 +11,14 @@
 	<!-- Definir un círculo heredando de figura -->
 	<bean id="circulo" class="es.cursos.figuras.Circulo" parent="figura">
 		<property name="nombre" value="miCirculo"></property>
-		<property name="radio" value="20"></property>
+		<property name="radio" value="20.5"></property>
 	</bean>
 	
 	<!-- Definir un triángulo heredando de figura -->
 	<bean id="triangulo" class="es.cursos.figuras.Triangulo" parent="figura">
 		<!--<property name="nombre" value="miTriangulo"></property>-->
-		<property name="base" value="10"></property>
-		<property name="altura" value="5"></property>
+		<property name="base" value="10.7"></property>
+		<property name="altura" value="5.2"></property>
 	</bean>
 
 </beans>
