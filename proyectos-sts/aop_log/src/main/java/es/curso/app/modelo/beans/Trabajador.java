@@ -61,6 +61,13 @@ public class Trabajador {
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Trabajador [numeroTrabajador=" + numeroTrabajador + ", id=" + id + ", nombre=" + nombre
+				+ ", departamento=" + departamento + "]";
+	}
 	
 	
 }
