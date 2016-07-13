@@ -61,6 +61,11 @@ public class Principal {
 			System.out.println(p);
 		}
 		
+		// Insert product
+		sql = "INSERT INTO productos(nombre, idcategoria, precio, existencias) VALUES (?,?,?,?)";
+		n = template.update(sql, new Object[] {"CocaCola", 1, 2, 100});
+		System.out.println("Insertados: " + n);
+		
 		((ClassPathXmlApplicationContext) context).close();
 
 	}
