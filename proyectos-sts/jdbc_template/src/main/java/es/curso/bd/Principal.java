@@ -66,6 +66,11 @@ public class Principal {
 		n = template.update(sql, new Object[] {"CocaCola", 1, 2, 100});
 		System.out.println("Insertados: " + n);
 		
+		// Call MySQL procedure
+		sql = "CALL actualizarPais(?,?)";
+		n = template.update(sql, new Object[] {"BOLID", "Australia"});
+		System.out.println("Cambiados: " + n);
+		
 		((ClassPathXmlApplicationContext) context).close();
 
 	}
