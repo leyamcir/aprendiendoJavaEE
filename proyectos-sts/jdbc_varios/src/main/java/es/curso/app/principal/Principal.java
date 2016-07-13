@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.object.SqlFunction;
 
 import es.curso.app.modelo.beans.Trabajador;
 
@@ -24,6 +25,13 @@ public class Principal {
 		for (Trabajador t: trabajadores) {
 			System.out.println(t);
 		}
+		
+		// Llamada a funciones
+		
+		sql = "SELECT calcularIVA(100,21)";
+		SqlFunction f = new SqlFunction(ds, sql);
+		
+		System.out.println(f.runGeneric());
 		
 		((ClassPathXmlApplicationContext) context).close();
 	}
