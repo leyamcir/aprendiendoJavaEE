@@ -19,9 +19,9 @@ public class Principal {
 		// Probar los métodos
 		
 		// Insert
-		//Trabajador t = new Trabajador(0, "455", "Alberto", "Informatica");
-		//int n = dao.save(t);
-		//System.out.println(n);
+		Trabajador ti = new Trabajador(0, "458", "Pepa", "Restauración");
+		int n = dao.save(ti);
+		System.out.println(n);
 		
 		// Delete
 		//int deleteTrabajador = 98;
