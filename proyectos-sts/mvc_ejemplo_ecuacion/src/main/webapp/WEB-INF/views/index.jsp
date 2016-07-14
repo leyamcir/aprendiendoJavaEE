@@ -7,6 +7,7 @@
 <title>Ejemplo MVC Ecuacion</title>
 </head>
 <body>
+	<h1>Parámetros ecuación grado 2</h1>
 	<form method="post" action="calcular">
 		A: <input type="text" name="a">
 		B: <input type="text" name="b">
