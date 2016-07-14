@@ -33,8 +33,16 @@ public class Principal {
 		SqlFunction f = new SqlFunction(ds, sql);
 		
 		System.out.println(f.runGeneric());
-		
 		((ClassPathXmlApplicationContext) context).close();
+		
+		// Execute procedure with in & out params
+		ApplicationContext context2 = new ClassPathXmlApplicationContext("applicationContext2.xml");
+		
+		DataSource ds2 = context2.getBean("ds", DataSource.class);
+		ExecProcedure proc = new ExecProcedure(ds2, "total");
+		double resultado = proc.execute(10248);
+		System.out.println("Resultado: "+ resultado);
+		
 	}
 
 }

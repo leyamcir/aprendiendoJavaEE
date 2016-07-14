@@ -63,7 +63,7 @@ public class ServicioLog {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy hh:mm");
 		try {
 			f = new FileOutputStream("log.txt",true);
-			linea = sdf.format(d)+ "\t\t"+ "DELETED with id:" + "\t\t" + n + "\r\n";
+			linea = sdf.format(d)+ "\t\t"+ "DELETED Trabajador with id:" + "\t\t" + n + "\r\n";
 
 			f.write(linea.getBytes());
 			
