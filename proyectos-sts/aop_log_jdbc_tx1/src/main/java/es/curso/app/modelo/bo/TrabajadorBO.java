@@ -32,18 +32,15 @@ public class TrabajadorBO implements ITrabajadorBO{
 	
 	// Interface methods 
 	public int saveBO(Trabajador t) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.save(t);
 	}
 
 	public int deleteBO(int numero) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(numero);
 	}
 
 	public int updateBO(Trabajador t) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(t);
 	}
 
 	public Trabajador getBO(int numero) {
