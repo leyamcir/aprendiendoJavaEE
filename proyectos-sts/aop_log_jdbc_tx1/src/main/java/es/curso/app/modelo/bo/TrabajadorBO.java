@@ -2,6 +2,8 @@ package es.curso.app.modelo.bo;
 
 import java.util.List;
 
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import es.curso.app.modelo.beans.Trabajador;
@@ -31,8 +33,25 @@ public class TrabajadorBO implements ITrabajadorBO{
 	}
 	
 	// Interface methods 
-	public int saveBO(Trabajador t) {
-		return dao.save(t);
+	public int saveBO(final Trabajador t) {
+		// Transaction
+		return txTemplate.execute(new TransactionCallback<Integer>() {
+			
+			// Integer to return number. 
+			// If not return necesssary, use Void class
+
+			public Integer doInTransaction(TransactionStatus status) {
+				try{
+					return dao.save(t);
+				} catch (RuntimeException e) {
+					status.setRollbackOnly();
+					throw e;
+				}
+				 
+			}
+			
+		});
+		
 	}
 
 	public int deleteBO(int numero) {
