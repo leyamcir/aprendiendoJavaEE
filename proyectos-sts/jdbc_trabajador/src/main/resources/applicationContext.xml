@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<context:property-placeholder location="jdbc.properties"/>
+	
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${pwd}"></property>
+		<property name="driverClassName" value="${driver}"></property>
+	</bean>
+	
+	<bean id="dao" class="es.curso.app.modelo.dao.TrabajadorDAO">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="log" class="es.curso.app.log.ServicioLog"></bean>
+	
+	<aop:config>
+		<aop:aspect ref="log">
+			<aop:pointcut expression="execution(* es.curso.app.modelo.dao.ITrabajadorDAO.save(..)) and args(t)" id="savepc"/>
+			<aop:after-returning method="grabarLog" pointcut-ref="savepc" arg-names="t"/>
+		</aop:aspect>
+		<aop:aspect ref="log">
+			<aop:pointcut expression="execution(* es.curso.app.modelo.dao.ITrabajadorDAO.delete(..)) and args(n)" id="deletepc"/>
+			<aop:after-returning method="borrarLog" pointcut-ref="deletepc" arg-names="n"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- Configuración de Aspectos con Anotaciones -->
+	<!--  aop:aspectj-autoproxy/>-->
+	
+</beans>
