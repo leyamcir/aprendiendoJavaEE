@@ -1,0 +1,3 @@
+13/07/2016 12:46		Trabajador [numeroTrabajador=0, id=459, nombre=Lucía, departamento=Marketing]
+13/07/2016 12:55		INSERTED		Trabajador [numeroTrabajador=0, id=460, nombre=Pepa, departamento=Restauración]
+13/07/2016 12:55		DELETED with id:		102
