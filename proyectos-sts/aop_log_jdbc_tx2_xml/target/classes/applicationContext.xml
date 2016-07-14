@@ -51,7 +51,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *.TrabajadorBO.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* es.curso.app.modelo.bo.TrabajadorBO.*(..))"/>
 	</aop:config>
 	
 	<bean id="trabajadorBO" class="es.curso.app.modelo.bo.TrabajadorBO">
