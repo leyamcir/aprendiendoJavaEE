@@ -33,7 +33,9 @@
 		</aop:aspect>
 	</aop:config>
 	
-	<!-- Configuración de Aspectos con Anotaciones -->
-	<!--  aop:aspectj-autoproxy/>-->
+	<!-- Transacciones -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 	
 </beans>
