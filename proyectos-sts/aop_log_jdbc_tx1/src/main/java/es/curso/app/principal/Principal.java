@@ -20,12 +20,12 @@ public class Principal {
 		// Probar los métodos
 		
 		// Insert
-		Trabajador ti = new Trabajador(0, "461", "Juan", "Marketing");
+		Trabajador ti = new Trabajador(0, "462", "Manuel", "Urgente");
 		int n = bo.saveBO(ti);
 		System.out.println(n);
 		
 		// Delete
-		int deleteTrabajador = 102;
+		int deleteTrabajador = 100;
 		int numDelete = bo.deleteBO(deleteTrabajador);
 		System.out.println("Borrado: "+numDelete);
 		

@@ -35,6 +35,17 @@ public class TrabajadorBO implements ITrabajadorBO{
 	
 	// Interface methods 
 	public int saveBO(final Trabajador t) {
+		
+		// Most restrictive isolation level
+		txTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_SERIALIZABLE);
+		
+		// Execute in transacction force (if there's already one fired)
+		txTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
+		
+		// Establish 10 sec timeout
+		// (Maximum time to execute transaction)
+		txTemplate.setTimeout(10);
+		
 		// Transaction
 		return txTemplate.execute(new TransactionCallback<Integer>() {
 			
@@ -56,14 +67,7 @@ public class TrabajadorBO implements ITrabajadorBO{
 	}
 
 	public int deleteBO(final int numero) {
-		//return dao.delete(numero);
-		
-		// Most restrictive isolation level
-		txTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_SERIALIZABLE);
-		
-		// Execute in transacction force (if there's already one fired)
-		txTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
-		
+		//return dao.delete(numero);	
 		
 		// Transaction
 		return txTemplate.execute(new TransactionCallback<Integer>() {
