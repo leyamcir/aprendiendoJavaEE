@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- Definir el DataSource -->
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="driverClassName" value="${driver}"></property>
+	</bean>
+	
+	<bean id="dao" class="es.curso.modelo.dao.TrabajadorDAO">
+		<property name="dataSource" ref="ds" ></property>
+	</bean>
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="conexion.properties" />
+	</bean>
+	
+	<!-- Necesitamos un transaction manager y un transaction template -->
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="transactionTemplate" 
+		  class="org.springframework.transaction.support.TransactionTemplate">
+		  <property name="transactionManager" ref="transactionManager"></property>
+	</bean>
+	  
+		
+	<bean id="trabajadorBo" class="es.curso.modelo.bo.TrabajadorBO">
+		<property name="trabajadorDao" ref="dao"></property>
+		<property name="transactionTemplate" ref="transactionTemplate"></property>
+	</bean>
+
+</beans>
