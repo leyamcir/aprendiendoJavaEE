@@ -2,6 +2,7 @@ package es.curso.app.modelo.bo;
 
 import java.util.List;
 
+import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -56,6 +57,14 @@ public class TrabajadorBO implements ITrabajadorBO{
 
 	public int deleteBO(final int numero) {
 		//return dao.delete(numero);
+		
+		// Most restrictive isolation level
+		txTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_SERIALIZABLE);
+		
+		// Execute in transacction force (if there's already one fired)
+		txTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
+		
+		
 		// Transaction
 		return txTemplate.execute(new TransactionCallback<Integer>() {
 			
