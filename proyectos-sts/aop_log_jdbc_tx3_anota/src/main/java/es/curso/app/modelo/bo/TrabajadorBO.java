@@ -2,6 +2,8 @@ package es.curso.app.modelo.bo;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -9,9 +11,11 @@ import org.springframework.transaction.support.TransactionTemplate;
 import es.curso.app.modelo.beans.Trabajador;
 import es.curso.app.modelo.dao.ITrabajadorDAO;
 
+@Service("bo")
 @Transactional(timeout=60, propagation=Propagation.SUPPORTS)
 public class TrabajadorBO implements ITrabajadorBO{
 	
+	@Autowired
 	private ITrabajadorDAO dao;
 	
 

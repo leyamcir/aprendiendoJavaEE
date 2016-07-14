@@ -40,11 +40,15 @@
 		<property name="dataSource" ref="ds"/>
 	</bean>
 	
-	<bean id="trabajadorBO" class="es.curso.app.modelo.bo.TrabajadorBO">
+	<!-- bean id="trabajadorBO" class="es.curso.app.modelo.bo.TrabajadorBO">
 		<property name="dao" ref="trabajadorDAO"></property>
-	</bean>
+	</bean> -->
 	
 	<!-- Transactions with annotations -->
 	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<!-- To use @Service instead of bean declared here -->
+	<context:annotation-config/>
+	<context:component-scan base-package="es.curso.app.modelo.bo"></context:component-scan>
 	
 </beans>

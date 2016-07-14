@@ -15,20 +15,12 @@ public class Principal {
 		ApplicationContext context;
 
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ITrabajadorBO bo = (ITrabajadorBO) context.getBean("trabajadorBO");
+		ITrabajadorBO bo = (ITrabajadorBO) context.getBean("bo");
 
 		// Probar los métodos
 
-		// Insert
+		
 		try{
-			Trabajador ti = new Trabajador(0, "468", "Joaquín", "Restauración");
-			int n = bo.saveBO(ti);
-			System.out.println(n);
-
-			// Delete
-			int deleteTrabajador = 103;
-			int numDelete = bo.deleteBO(deleteTrabajador);
-			System.out.println("Borrado: "+numDelete);
 
 			// SELECT ONE
 			int selectTrabajador = 97;
@@ -66,6 +58,16 @@ public class Principal {
 			for (Trabajador trabajador: trabajadores3) {
 				System.out.println(trabajador);
 			}
+
+			// Insert
+			Trabajador ti = new Trabajador(0, "468", "Joaquín", "Restauración");
+			int n = bo.saveBO(ti);
+			System.out.println(n);
+
+			// Delete
+			int deleteTrabajador = 103;
+			int numDelete = bo.deleteBO(deleteTrabajador);
+			System.out.println("Borrado: "+numDelete);
 		} catch(RuntimeException e) {
 			System.out.println(e.getMessage());
 		}
