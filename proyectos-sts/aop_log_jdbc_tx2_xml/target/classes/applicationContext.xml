@@ -50,6 +50,7 @@
 		</tx:attributes>
 	</tx:advice>
 	
+	<!-- Cut point with all interface methods -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* es.curso.app.modelo.bo.TrabajadorBO.*(..))"/>
 	</aop:config>
