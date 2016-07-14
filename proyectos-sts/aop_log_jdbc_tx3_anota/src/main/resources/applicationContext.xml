@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 	<context:property-placeholder location="jdbc.properties"/>
 	
@@ -33,19 +35,16 @@
 		</aop:aspect>
 	</aop:config>
 	
-	<!-- Transacciones -->
+	<!-- Transactions -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="ds"/>
 	</bean>
 	
-	<!-- Plantilla para programar las transacciones -->
-	<bean id="txTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-		<property name="transactionManager" ref="txManager"/>
-	</bean>
-	
 	<bean id="trabajadorBO" class="es.curso.app.modelo.bo.TrabajadorBO">
 		<property name="dao" ref="trabajadorDAO"></property>
-		<property name="txTemplate" ref="txTemplate"></property>
 	</bean>
+	
+	<!-- Transactions with annotations -->
+	<tx:annotation-driven transaction-manager="txManager"/>
 	
 </beans>
