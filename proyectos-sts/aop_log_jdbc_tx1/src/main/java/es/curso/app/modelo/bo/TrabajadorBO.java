@@ -54,12 +54,46 @@ public class TrabajadorBO implements ITrabajadorBO{
 		
 	}
 
-	public int deleteBO(int numero) {
-		return dao.delete(numero);
+	public int deleteBO(final int numero) {
+		//return dao.delete(numero);
+		// Transaction
+		return txTemplate.execute(new TransactionCallback<Integer>() {
+			
+			// Integer to return number. 
+			// If not return necesssary, use Void class
+
+			public Integer doInTransaction(TransactionStatus status) {
+				try{
+					return dao.delete(numero);
+				} catch (RuntimeException e) {
+					status.setRollbackOnly();
+					throw e;
+				}
+				 
+			}
+			
+		});
 	}
 
-	public int updateBO(Trabajador t) {
-		return dao.update(t);
+	public int updateBO(final Trabajador t) {
+		//return dao.update(t);
+		// Transaction
+		return txTemplate.execute(new TransactionCallback<Integer>() {
+			
+			// Integer to return number. 
+			// If not return necesssary, use Void class
+
+			public Integer doInTransaction(TransactionStatus status) {
+				try{
+					return dao.update(t);
+				} catch (RuntimeException e) {
+					status.setRollbackOnly();
+					throw e;
+				}
+				 
+			}
+			
+		});
 	}
 
 	public Trabajador getBO(int numero) {
