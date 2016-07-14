@@ -10,7 +10,6 @@ import es.curso.app.modelo.dao.ITrabajadorDAO;
 public class TrabajadorBO implements ITrabajadorBO{
 	
 	private ITrabajadorDAO dao;
-	private TransactionTemplate txTemplate;
 	
 
 	// Getters & setter
@@ -20,14 +19,6 @@ public class TrabajadorBO implements ITrabajadorBO{
 
 	public void setDao(ITrabajadorDAO dao) {
 		this.dao = dao;
-	}
-
-	public TransactionTemplate getTxTemplate() {
-		return txTemplate;
-	}
-
-	public void setTxTemplate(TransactionTemplate txTemplate) {
-		this.txTemplate = txTemplate;
 	}
 	
 	// Interface methods 
