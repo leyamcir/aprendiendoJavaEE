@@ -39,10 +39,11 @@ public class Principal {
 		ApplicationContext context2 = new ClassPathXmlApplicationContext("applicationContext2.xml");
 		
 		DataSource ds2 = context2.getBean("ds", DataSource.class);
-		ExecProcedure proc = new ExecProcedure(ds2, "total");
+		ExecProcedure proc = new ExecProcedure(ds2, "calcularDetalles");
 		double resultado = proc.execute(10248);
 		System.out.println("Resultado: "+ resultado);
 		
+		((ClassPathXmlApplicationContext) context2).close();
 	}
 
 }

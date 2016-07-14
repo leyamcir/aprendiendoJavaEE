@@ -16,7 +16,7 @@ public class ExecProcedure extends StoredProcedure {
 		super(ds, name);
 
 		declareParameter(new SqlParameter("idped", Types.INTEGER));
-		declareParameter(new SqlOutParameter("total", Types.FLOAT));
+		declareParameter(new SqlOutParameter("calcularDetalles", Types.FLOAT));
 		compile();
 	}
 	
@@ -26,8 +26,8 @@ public class ExecProcedure extends StoredProcedure {
 		
 		Map<String, Object> paramsOut = execute(params);
 		
-		Double result = (Double) paramsOut.get("total");
-		return (result != null) ? result.doubleValue() : new Double(-1.0);
+		Double result = (Double) paramsOut.get("calcularDetalles");
+		return (result != null) ? result.floatValue() : new Float(-1.0);
 	}
 
 }
