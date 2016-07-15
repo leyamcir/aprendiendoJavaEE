@@ -2,6 +2,8 @@ package es.curso.mvc.models.bo;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import es.curso.mvc.models.bean.Trabajador;
 
 

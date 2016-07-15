@@ -47,5 +47,5 @@
 	
 	<!-- To use @Service instead of bean declared here -->
 	<context:annotation-config/>
-	<context:component-scan base-package="es.curso.app.modelo.bo"></context:component-scan>
+	<context:component-scan base-package="es.curso.mvc.models.bo, es.curso.mvc.controllers"></context:component-scan>
 </beans>

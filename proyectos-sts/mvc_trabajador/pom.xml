@@ -124,6 +124,13 @@
 			<version>${org.springframework-version}</version>
 		</dependency> 
 		
+		<!-- Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
