@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<context:property-placeholder location="WEB-INF/spring/jdbc.properties"/>
+	
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${pwd}"></property>
+		<property name="driverClassName" value="${driver}"></property>
+	</bean>
+	
+	<bean id="trabajadorDAO" class="es.curso.mvc.models.dao.TrabajadorDAO">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="log" class="es.curso.mvc.log.ServicioLog"></bean>
+	
+	<aop:config>
+		<aop:aspect ref="log">
+			<aop:pointcut expression="execution(* es.curso.mvc.models.dao.ITrabajadorDAO.save(..)) and args(t)" id="savepc"/>
+			<aop:after-returning method="grabarLog" pointcut-ref="savepc" arg-names="t"/>
+		</aop:aspect>
+		<aop:aspect ref="log">
+			<aop:pointcut expression="execution(* es.curso.mvc.models.dao.ITrabajadorDAO.delete(..)) and args(n)" id="deletepc"/>
+			<aop:after-returning method="borrarLog" pointcut-ref="deletepc" arg-names="n"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- Transactions -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"/>
+	</bean>
+	
+	<!-- Transactions with annotations -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<!-- To use @Service instead of bean declared here -->
+	<context:annotation-config/>
+	<context:component-scan base-package="es.curso.mvc.models.bo, es.curso.mvc.controllers"></context:component-scan>
+	
+	
+	<!-- Tiles -->
+	<bean id="tilesConfigurer" 
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>		
+		</property>	
+	</bean>
+</beans>
