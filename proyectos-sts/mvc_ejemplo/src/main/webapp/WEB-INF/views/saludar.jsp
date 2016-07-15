@@ -8,7 +8,7 @@
 <h1>
 	${saludo}  
 </h1>
-
-<P>  Ejemplo página de saludo. </P>
+<h2>${ fecha }</h2>
+<P>  ${edad} </P>
 </body>
 </html>

@@ -39,8 +39,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/saludar", method= RequestMethod.POST)
-	public String saludar(@RequestParam("nombre") String nombre, Model model){
+	public String saludar(@RequestParam("nombre") String nombre,
+		@RequestParam("edad") int edad, 
+		@RequestParam("fecha") Date fecha, Model model){
+		
 		model.addAttribute("saludo", "Hola " + nombre);
+		model.addAttribute("edad", "Tienes " + edad + " años.");
+		model.addAttribute("fecha", "Naciste el " + fecha + ".");
 		return "saludar";
 	}
 }

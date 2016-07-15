@@ -9,6 +9,8 @@
 <body>
 	<form method="post" action="saludar">
 		Nombre: <input type="text" name="nombre">
+		Edad: <input type="text" name="edad">
+		Fecha: <input type="text" name="fecha">
 		<input type="submit" name="enviar" value="Saludar">
 	</form>
 </body>
