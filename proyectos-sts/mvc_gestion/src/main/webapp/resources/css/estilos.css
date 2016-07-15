@@ -1,0 +1,109 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: Tahoma;
+	font-size: 11px;
+}
+
+#contenedor {
+	margin: 0px auto;
+	text-align: center;
+	width: 95%;
+}
+
+/*  */
+
+table {
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+#titulo {
+	background-color: #9c9c9c;
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 10px;
+	-webkit-border-radius: 10px 10px 10px 20px;
+	border-radius: 10px 10px 10px 20px;
+	
+	background: #ebf1f6; /* Old browsers */
+background: -moz-linear-gradient(left,  #ebf1f6 0%, #abd3ee 50%, #89c3eb 78%, #d5ebfb 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(78%,#89c3eb), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 78%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 78%,#d5ebfb 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 78%,#d5ebfb 100%); /* IE10+ */
+background: linear-gradient(to right,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 78%,#d5ebfb 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 ); /* IE6-9 */
+	
+}
+
+.fila {
+	background-color: #DCDCDC;
+	color: blue;
+}
+
+.fila_impar {
+	background-color: orange;
+	color: black;
+}
+
+/* ESTILOS PARA LAS PANTALLAS */
+#contenedor2 {
+	margin: 0px auto;
+	text-align: center;
+	width: 95%;
+	background-color: #EFEFEF;
+	border: 2px solid gray;
+}
+
+#idioma {
+	height:20px;
+	text-align: right;
+	padding-right: 10px;
+	border: 1px solid gray;
+	background-color: #ACACAC;
+}
+
+#idioma a {
+	text-decoration: none;
+	color: #390000;	
+}
+
+#idioma a:HOVER {
+	text-decoration: underline;	
+}
+
+#cabecera {
+	font-size: 24px;
+	font-weight: bold;
+	height: 75px;
+	padding: 20px;
+	border: 1px solid gray;
+}
+
+#left {
+	float: left;
+	width: 20%;
+	padding: 20px;
+}
+
+#right {
+	float: right; 
+	width: 70%;
+}
+
+#clear {
+	clear: both;
+}
+
+#pie {
+	height: 35px;
+	background-color: orange; 
+	color: #565656;
+	font-weight: bold;
+	padding: 5px;
+	border: 1px solid gray;
+} 
+
+

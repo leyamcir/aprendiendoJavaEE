@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:property-placeholder location="WEB-INF/spring/conexion.properties" />
+
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${url}" />
+		<property name="username" value="${user}" />
+		<property name="password" value="${pass}" />
+		<property name="driverClassName" value="${driver}" />
+	</bean>
+	
+	<bean id="pedidoDAO" class="es.curso.ejemplo.modelo.daos.PedidoDAO">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="clienteDAO" class="es.curso.ejemplo.modelo.daos.ClienteDAO">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="empleadoDAO" class="es.curso.ejemplo.modelo.daos.EmpleadoDAO">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="empresaDAO" class="es.curso.ejemplo.modelo.daos.EmpresaEnviosDAO">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	
+	<!-- Tiles -->
+	<bean id="tilesConfigurer" 
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>		
+		</property>	
+	</bean>
+</beans>

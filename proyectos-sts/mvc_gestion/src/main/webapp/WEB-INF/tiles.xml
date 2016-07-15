@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+	</definition>
+	
+	<definition name="principal" extends="base.definition">
+		<put-attribute name="title" value="APLICACIÓN DE GESTIÓN DE PEDIDOS" />
+		<put-attribute name="body" value="/WEB-INF/views/inicio.jsp" />
+	</definition>
+	
+	<definition name="nuevo_pedido" extends="base.definition">
+		<put-attribute name="title" value="DATOS DEL PEDIDO" />
+		<put-attribute name="body" value="/WEB-INF/views/nuevo.jsp" />
+	</definition>
+	
+	<definition name="listar_pedidos" extends="base.definition">
+		<put-attribute name="title" value="LISTADO DE PEDIDOS" />
+		<put-attribute name="body" value="/WEB-INF/views/listar.jsp" />
+	</definition>
+</tiles-definitions>
