@@ -87,7 +87,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/process", method = RequestMethod.POST)
-	public String process(@ModelAttribute("user") User user, Model model) {
+	public String process(User user, Model model) {
 		// Get form filled bean 
 		// and send it to result view
 		model.addAttribute("user", user);

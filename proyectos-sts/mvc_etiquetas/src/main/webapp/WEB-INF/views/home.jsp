@@ -17,9 +17,10 @@
 		Sex: <form:radiobuttons path="sex" items="${ genders }"/><br/>
 		Number: <form:radiobuttons path="number" items="${ numbers }"/><br/>
 		Country: <form:select path="country" items="${ countries }"></form:select><br/>
-		Java skills: <form:select multiple="true" path="jSkills">
+		Java skills: 
+		<form:select multiple="true" path="jSkills">
 		    <form:options items="${skillOptionList}"/>
-		</form:select>
+		</form:select><br/>
 		<form:button value="Enviar" name="enviar">Enviar</form:button>
 	</form:form>
 </body>
