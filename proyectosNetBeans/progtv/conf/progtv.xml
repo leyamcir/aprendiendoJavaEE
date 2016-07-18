@@ -1,0 +1,31 @@
+<!--
+    Context configuration file
+	Copiar en ${catalina_home}/conf/Catalina/localhost/progtv.xml
+	Para despliegue war: docBase="progtv.war"
+	Substituir localhost por la IP adecuada
+	Substituir username/password
+-->
+
+
+<Context
+	     docBase="C:\cjava\progtv\dist\progtv.war"
+         path="/progtv"
+		 relodable="false"
+		 debug="0"
+         antiResourceLocking="false" antiJARLocking="false">
+
+	<Resource
+      name="jdbc/progtvDS" 
+      type="javax.sql.DataSource"
+      driverClassName="oracle.jdbc.OracleDriver"
+      url="jdbc:oracle:thin:@localhost:1521/curso"
+      username="alum00"
+      password="alum00"
+      maxIdle="10"
+      removeAbandoned="true"
+      removeAbandonedTimeout="60"
+      logAbandoned="true"
+      maxWait="15000"
+      maxActive="50"/> 
+  
+</Context>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app id="WebApp_1175081125984">
+	<display-name>progtv</display-name>
+  <description>Curso</description>
+  <distributable/>
+  <servlet>
+    <servlet-name>ServletControl</servlet-name>
+    <servlet-class>progtv.ServletControl</servlet-class>
+      </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletControl</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletControl</servlet-name>
+  	<url-pattern>/ServletControl</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+ </web-app>

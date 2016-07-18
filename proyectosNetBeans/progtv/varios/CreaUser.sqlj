@@ -1,0 +1,59 @@
+import local.*;
+import progtv.*;
+
+import java.sql.*;
+import oracle.sql.*;
+import oracle.jdbc.*;
+import sqlj.runtime.*;
+import sqlj.runtime.ref.*;
+import java.text.*;
+import java.util.*;
+
+#sql iterator i_user (String iduser,
+                      String password,
+                      String nombre,
+                      Date lastlogin);
+
+public class CreaUser {
+    public static void main(String[] args) {
+        try {
+            Dbcon dbc = DbProgtv.getConn();
+                       
+            SimpleDateFormat formato =
+                    new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                      
+            try {
+                #sql {insert into user (iduser,password,nombre,lastlogin)
+                  values ('gsamsa','meta','Gregorio Samsa',null)
+                 };
+                #sql {commit};
+            }
+            catch (Exception ex) {
+                 ApErr.error("CreateUser",ex);
+            }
+            
+            i_user user;
+            
+            #sql user = {Select distinct iduser,password,nombre,lastlogin
+                       from users
+                       order by iduser};
+                       
+             while (user.next()) {
+                java.util.Date d = (java.util.Date)user.lastlogin();
+                String fh = "";
+                if (d != null) {
+                    fh = formato.format(d);
+                }
+                System.out.println(user.iduser() + " - "
+                                   + user.password() + " - "
+                                   + user.nombre() + " - "
+                                   + fh);
+             }
+             user.close();
+
+        }
+        catch (Exception ex) {
+            ApErr.error("CreateUser",ex);
+        }
+    }
+}
