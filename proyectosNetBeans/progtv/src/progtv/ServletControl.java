@@ -57,7 +57,7 @@ public class ServletControl extends HttpServlet {
         String next   = error;
         String accion = null;
         String vdir   = "";
-        HttpSession ses = req.getSession();
+        HttpSession ses = req.getSession();// Si la sesión no estaba previamente creada, se crea
 
         try {
             // Analis de url para determinar componentes
