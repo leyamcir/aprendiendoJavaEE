@@ -34,10 +34,13 @@ public class TestPrimoWS {
                 String es = (primo) ? " es" : " NO es"; 
                 String primoResult = "El número "+ s + es + " primo";                   
                 System.out.println(primoResult);
+                
+                System.out.println("Recuerde: inserte '-1' para salir.");
 
             } catch(Exception e){ 
                 //e.printStackTrace();
                 System.out.println("El número introducido es incorrecto");
+                System.out.println("Recuerde: inserte '-1' para salir.");
             }
         }
         
