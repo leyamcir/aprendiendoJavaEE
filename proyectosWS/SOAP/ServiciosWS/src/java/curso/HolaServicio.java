@@ -5,9 +5,13 @@
  */
 package curso;
 
+import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.servlet.ServletContext;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 
 /**
  *
@@ -27,5 +31,43 @@ public class HolaServicio {
             return "¡Hola curso !";
         }
         
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "esprimo")
+    public boolean esprimo(@WebParam(name = "numero") Long numero) {
+        if (numero == null || numero <= 1) {
+            return false;
+        }
+
+        long raizN = (long)Math.sqrt(numero);
+        boolean primo = true;
+        
+        for(int i=2; i<= raizN; i++){
+            if (numero % i == 0){
+                primo = false;
+                break;
+            }
+        }
+        return primo;
+
+        
+    }
+
+    /**
+     * Web service operation
+     */
+    // Get context
+    @Resource WebServiceContext wsContext;
+    @WebMethod(operationName = "info")
+    public String info() {
+        MessageContext msc;
+        msc = wsContext.getMessageContext();
+        ServletContext context =
+        (ServletContext) msc.get(MessageContext.SERVLET_CONTEXT);
+        
+        return context.getServerInfo();
     }
 }

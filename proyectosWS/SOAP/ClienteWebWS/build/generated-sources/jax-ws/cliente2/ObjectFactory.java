@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Esprimo_QNAME = new QName("http://curso/", "esprimo");
+    private final static QName _EsprimoResponse_QNAME = new QName("http://curso/", "esprimoResponse");
     private final static QName _Hola_QNAME = new QName("http://curso/", "hola");
     private final static QName _HolaResponse_QNAME = new QName("http://curso/", "holaResponse");
 
@@ -32,6 +34,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link Esprimo }
+     * 
+     */
+    public Esprimo createEsprimo() {
+        return new Esprimo();
+    }
+
+    /**
+     * Create an instance of {@link EsprimoResponse }
+     * 
+     */
+    public EsprimoResponse createEsprimoResponse() {
+        return new EsprimoResponse();
     }
 
     /**
@@ -48,6 +66,24 @@ public class ObjectFactory {
      */
     public HolaResponse createHolaResponse() {
         return new HolaResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Esprimo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://curso/", name = "esprimo")
+    public JAXBElement<Esprimo> createEsprimo(Esprimo value) {
+        return new JAXBElement<Esprimo>(_Esprimo_QNAME, Esprimo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EsprimoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://curso/", name = "esprimoResponse")
+    public JAXBElement<EsprimoResponse> createEsprimoResponse(EsprimoResponse value) {
+        return new JAXBElement<EsprimoResponse>(_EsprimoResponse_QNAME, EsprimoResponse.class, null, value);
     }
 
     /**

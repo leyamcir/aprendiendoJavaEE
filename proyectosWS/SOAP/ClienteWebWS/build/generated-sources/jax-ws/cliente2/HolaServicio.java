@@ -26,6 +26,21 @@ public interface HolaServicio {
 
     /**
      * 
+     * @param numero
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "esprimo", targetNamespace = "http://curso/", className = "cliente2.Esprimo")
+    @ResponseWrapper(localName = "esprimoResponse", targetNamespace = "http://curso/", className = "cliente2.EsprimoResponse")
+    @Action(input = "http://curso/HolaServicio/esprimoRequest", output = "http://curso/HolaServicio/esprimoResponse")
+    public boolean esprimo(
+        @WebParam(name = "numero", targetNamespace = "")
+        Long numero);
+
+    /**
+     * 
      * @param name
      * @return
      *     returns java.lang.String

@@ -47,6 +47,9 @@ public class ServletTestWS extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet ServletTestWS at " + request.getContextPath() + "</h1>");
             out.println("<h2>Response: " + hola("caracola") + "</h2>");
+            out.println("<h2>Es primo 2: " + esprimo(new Long(2)) + "</h2>");
+            out.println("<h2>Es primo 7: " + esprimo(new Long(7)) + "</h2>");
+            out.println("<h2>Es primo 25: " + esprimo(new Long(25)) + "</h2>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -100,4 +103,12 @@ public class ServletTestWS extends HttpServlet {
         return port.hola(name);
     }
 
+    private boolean esprimo(java.lang.Long numero) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        cliente2.HolaServicio port = service.getHolaServicioPort();
+        return port.esprimo(numero);
+    }
+
+    
 }
