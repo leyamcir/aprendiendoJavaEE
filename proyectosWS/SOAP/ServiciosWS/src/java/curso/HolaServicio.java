@@ -37,8 +37,12 @@ public class HolaServicio {
      * Web service operation
      */
     @WebMethod(operationName = "esprimo")
-    public boolean esprimo(@WebParam(name = "numero") Long numero) {
-        if (numero == null || numero <= 1) {
+    public boolean esprimo(@WebParam(name = "numero") Long numero) throws Exception{
+        if (numero == null){
+            throw new Exception("Debe introducir un número");
+        } 
+            
+        if (numero <= 1) {
             return false;
         }
 
