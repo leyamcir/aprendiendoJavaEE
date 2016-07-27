@@ -63,7 +63,50 @@ public class HolaServicio {
 
         
     }
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "esprimoFast")
+    public boolean esprimoFast(@WebParam(name = "numero") Long numero) throws Exception{
+        if (numero == null){
+            throw new Exception("Debe introducir un número");
+        } 
+        
+        if (numero <= 0){
+            throw new Exception("Número " + numero + " inválido");
+        }
+            
+        if (numero == 1) {
+            return false;
+        }
+        
+        if (numero <= 3) {
+            return true;
+        }
+        
+        if (numero % 2 == 0 || numero % 3 == 0) {
+            return false;
+        }
 
+        long i = 5;
+        
+        while (i*i <= numero){
+            if (numero % i == 0 
+                    || numero % (i+2) == 0){
+                
+                return false;
+            }
+            i = i+6;
+        }
+        
+        return true;
+
+        
+    }
+
+    
+    
     /**
      * Web service operation
      */
@@ -78,4 +121,6 @@ public class HolaServicio {
         
         return context.getServerInfo();
     }
+
+
 }

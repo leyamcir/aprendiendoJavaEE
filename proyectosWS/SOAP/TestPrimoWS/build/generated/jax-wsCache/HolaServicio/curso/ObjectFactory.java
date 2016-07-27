@@ -24,10 +24,12 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _EsprimoFastResponse_QNAME = new QName("http://curso/", "esprimoFastResponse");
     private final static QName _Esprimo_QNAME = new QName("http://curso/", "esprimo");
     private final static QName _Exception_QNAME = new QName("http://curso/", "Exception");
     private final static QName _Info_QNAME = new QName("http://curso/", "info");
     private final static QName _Hola_QNAME = new QName("http://curso/", "hola");
+    private final static QName _EsprimoFast_QNAME = new QName("http://curso/", "esprimoFast");
     private final static QName _EsprimoResponse_QNAME = new QName("http://curso/", "esprimoResponse");
     private final static QName _InfoResponse_QNAME = new QName("http://curso/", "infoResponse");
     private final static QName _HolaResponse_QNAME = new QName("http://curso/", "holaResponse");
@@ -48,6 +50,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EsprimoFastResponse }
+     * 
+     */
+    public EsprimoFastResponse createEsprimoFastResponse() {
+        return new EsprimoFastResponse();
+    }
+
+    /**
      * Create an instance of {@link Esprimo }
      * 
      */
@@ -61,6 +71,14 @@ public class ObjectFactory {
      */
     public Hola createHola() {
         return new Hola();
+    }
+
+    /**
+     * Create an instance of {@link EsprimoFast }
+     * 
+     */
+    public EsprimoFast createEsprimoFast() {
+        return new EsprimoFast();
     }
 
     /**
@@ -93,6 +111,15 @@ public class ObjectFactory {
      */
     public Info createInfo() {
         return new Info();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EsprimoFastResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://curso/", name = "esprimoFastResponse")
+    public JAXBElement<EsprimoFastResponse> createEsprimoFastResponse(EsprimoFastResponse value) {
+        return new JAXBElement<EsprimoFastResponse>(_EsprimoFastResponse_QNAME, EsprimoFastResponse.class, null, value);
     }
 
     /**
@@ -129,6 +156,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://curso/", name = "hola")
     public JAXBElement<Hola> createHola(Hola value) {
         return new JAXBElement<Hola>(_Hola_QNAME, Hola.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EsprimoFast }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://curso/", name = "esprimoFast")
+    public JAXBElement<EsprimoFast> createEsprimoFast(EsprimoFast value) {
+        return new JAXBElement<EsprimoFast>(_EsprimoFast_QNAME, EsprimoFast.class, null, value);
     }
 
     /**

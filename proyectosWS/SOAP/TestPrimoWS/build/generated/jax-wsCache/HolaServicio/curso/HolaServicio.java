@@ -72,4 +72,24 @@ public interface HolaServicio {
         throws Exception_Exception
     ;
 
+    /**
+     * 
+     * @param numero
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "esprimoFast", targetNamespace = "http://curso/", className = "curso.EsprimoFast")
+    @ResponseWrapper(localName = "esprimoFastResponse", targetNamespace = "http://curso/", className = "curso.EsprimoFastResponse")
+    @Action(input = "http://curso/HolaServicio/esprimoFastRequest", output = "http://curso/HolaServicio/esprimoFastResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://curso/HolaServicio/esprimoFast/Fault/Exception")
+    })
+    public boolean esprimoFast(
+        @WebParam(name = "numero", targetNamespace = "")
+        Long numero)
+        throws Exception_Exception
+    ;
+
 }

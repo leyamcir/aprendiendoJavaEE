@@ -25,6 +25,12 @@
 <message name="Exception">
 <part name="fault" element="tns:Exception"/>
 </message>
+<message name="esprimoFast">
+<part name="parameters" element="tns:esprimoFast"/>
+</message>
+<message name="esprimoFastResponse">
+<part name="parameters" element="tns:esprimoFastResponse"/>
+</message>
 <portType name="HolaServicio">
 <operation name="info">
 <input wsam:Action="http://curso/HolaServicio/infoRequest" message="tns:info"/>
@@ -38,6 +44,11 @@
 <input wsam:Action="http://curso/HolaServicio/esprimoRequest" message="tns:esprimo"/>
 <output wsam:Action="http://curso/HolaServicio/esprimoResponse" message="tns:esprimoResponse"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://curso/HolaServicio/esprimo/Fault/Exception"/>
+</operation>
+<operation name="esprimoFast">
+<input wsam:Action="http://curso/HolaServicio/esprimoFastRequest" message="tns:esprimoFast"/>
+<output wsam:Action="http://curso/HolaServicio/esprimoFastResponse" message="tns:esprimoFastResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://curso/HolaServicio/esprimoFast/Fault/Exception"/>
 </operation>
 </portType>
 <binding name="HolaServicioPortBinding" type="tns:HolaServicio">
@@ -61,6 +72,18 @@
 </output>
 </operation>
 <operation name="esprimo">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="esprimoFast">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

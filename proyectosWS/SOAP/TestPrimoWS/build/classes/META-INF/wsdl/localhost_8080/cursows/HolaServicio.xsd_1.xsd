@@ -4,6 +4,10 @@
 
 <xs:element name="esprimo" type="tns:esprimo"/>
 
+<xs:element name="esprimoFast" type="tns:esprimoFast"/>
+
+<xs:element name="esprimoFastResponse" type="tns:esprimoFastResponse"/>
+
 <xs:element name="esprimoResponse" type="tns:esprimoResponse"/>
 
 <xs:element name="hola" type="tns:hola"/>
@@ -13,6 +17,24 @@
 <xs:element name="info" type="tns:info"/>
 
 <xs:element name="infoResponse" type="tns:infoResponse"/>
+
+<xs:complexType name="esprimoFast">
+<xs:sequence>
+<xs:element name="numero" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="esprimoFastResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="hola">
 <xs:sequence>
@@ -45,12 +67,6 @@
 <xs:complexType name="esprimoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="Exception">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

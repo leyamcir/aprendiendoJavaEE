@@ -9,6 +9,7 @@ import curso.Exception_Exception;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 /**
  *
@@ -30,20 +31,48 @@ public class TestPrimoWS {
                 BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                 String s = bufferRead.readLine();
 
-                opcion = Long.parseLong(s);                    
-                boolean primo = esprimo(opcion);     
+                opcion = Long.parseLong(s);     
+                // Time before call
+                long t0 = (new Date()).getTime();
+                
+                boolean primo = esprimo(opcion);  
+                
+                // Function lasting time
+                long t1 = (new Date()).getTime()-t0;
+                
                 String es = (primo) ? " es" : " NO es"; 
-                String primoResult = "El número "+ s + es + " primo";                   
+                String primoResult = "El número "+ s + es + " primo (resultado 1 obtenido en "+ t1 +" ms.)";                   
                 System.out.println(primoResult);
+                
+                // Fast??
+                // Time before call
+                t0 = (new Date()).getTime();
+
+                primo = esprimoFast(opcion);  
+                
+                // Function lasting time
+                t1 = (new Date()).getTime()-t0;
+                
+                es = (primo) ? " es" : " NO es"; 
+                primoResult = "El número "+ s + es + " primo (resultado 2 obtenido en "+ t1 +" ms.)";                   
+                System.out.println(primoResult);
+                
+                
                 System.out.println("Recuerde: inserte '-1' para salir.");
             } catch ( NumberFormatException e) {
                 System.out.println("Debe introducir un número");
                 System.out.println("Recuerde: inserte '-1' para salir.");
   
+                //Exception_Exception
+            } catch ( Exception_Exception e) {
+                System.out.println("Excepción de WS: " + e.getMessage());
+                System.out.println("Recuerde: inserte '-1' para salir.");
+  
+                //Exception_Exception
             } catch(Exception e){ 
                 //e.printStackTrace();
                 System.out.println("Error interno: " + e.getMessage());
-                System.out.println("Recuerde: inserte '-1' para salir.");
+                break;
             }
         }
         
@@ -56,6 +85,14 @@ public class TestPrimoWS {
         
         return port.esprimo(numero);
     }
+
+    private static boolean esprimoFast(java.lang.Long numero) throws Exception_Exception {
+        curso.HolaServicio_Service service = new curso.HolaServicio_Service();
+        curso.HolaServicio port = service.getHolaServicioPort();
+        return port.esprimoFast(numero);
+    }
+    
+    
     
     
     
