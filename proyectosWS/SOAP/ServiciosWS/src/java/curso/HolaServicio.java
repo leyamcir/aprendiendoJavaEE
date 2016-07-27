@@ -53,7 +53,7 @@ public class HolaServicio {
         long raizN = (long)Math.sqrt(numero);
         boolean primo = true;
         
-        for(int i=2; i<= raizN; i++){
+        for(int i=2; i<= raizN; i+=2){
             if (numero % i == 0){
                 primo = false;
                 break;

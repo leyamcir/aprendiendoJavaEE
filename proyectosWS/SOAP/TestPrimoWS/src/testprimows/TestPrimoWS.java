@@ -7,13 +7,12 @@ package testprimows;
 
 import curso.Exception_Exception;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 
 /**
  *
- * @author cas
+ * @author Alicia Daza
  */
 public class TestPrimoWS {
 
@@ -44,7 +43,7 @@ public class TestPrimoWS {
                 String primoResult = "El número "+ s + es + " primo (resultado 'esprimo' obtenido en "+ t1 +" ms.)";                   
                 System.out.println(primoResult);
                 
-                // Fast??
+                // Faster algorythm
                 // Time before call
                 t0 = (new Date()).getTime();
 
@@ -88,9 +87,6 @@ public class TestPrimoWS {
         curso.HolaServicio port = service.getHolaServicioPort();
         return port.esprimoFast(numero);
     }
-    
-    
-    
     
     
 }
