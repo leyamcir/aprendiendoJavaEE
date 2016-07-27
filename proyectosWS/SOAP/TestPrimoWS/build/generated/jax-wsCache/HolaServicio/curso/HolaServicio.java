@@ -7,6 +7,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -38,21 +39,6 @@ public interface HolaServicio {
 
     /**
      * 
-     * @param numero
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "esprimo", targetNamespace = "http://curso/", className = "curso.Esprimo")
-    @ResponseWrapper(localName = "esprimoResponse", targetNamespace = "http://curso/", className = "curso.EsprimoResponse")
-    @Action(input = "http://curso/HolaServicio/esprimoRequest", output = "http://curso/HolaServicio/esprimoResponse")
-    public boolean esprimo(
-        @WebParam(name = "numero", targetNamespace = "")
-        Long numero);
-
-    /**
-     * 
      * @param name
      * @return
      *     returns java.lang.String
@@ -65,5 +51,25 @@ public interface HolaServicio {
     public String hola(
         @WebParam(name = "name", targetNamespace = "")
         String name);
+
+    /**
+     * 
+     * @param numero
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "esprimo", targetNamespace = "http://curso/", className = "curso.Esprimo")
+    @ResponseWrapper(localName = "esprimoResponse", targetNamespace = "http://curso/", className = "curso.EsprimoResponse")
+    @Action(input = "http://curso/HolaServicio/esprimoRequest", output = "http://curso/HolaServicio/esprimoResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://curso/HolaServicio/esprimo/Fault/Exception")
+    })
+    public boolean esprimo(
+        @WebParam(name = "numero", targetNamespace = "")
+        Long numero)
+        throws Exception_Exception
+    ;
 
 }

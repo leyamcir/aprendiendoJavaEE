@@ -25,6 +25,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Esprimo_QNAME = new QName("http://curso/", "esprimo");
+    private final static QName _Exception_QNAME = new QName("http://curso/", "Exception");
     private final static QName _Info_QNAME = new QName("http://curso/", "info");
     private final static QName _Hola_QNAME = new QName("http://curso/", "hola");
     private final static QName _EsprimoResponse_QNAME = new QName("http://curso/", "esprimoResponse");
@@ -79,6 +80,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
      * Create an instance of {@link Info }
      * 
      */
@@ -93,6 +102,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://curso/", name = "esprimo")
     public JAXBElement<Esprimo> createEsprimo(Esprimo value) {
         return new JAXBElement<Esprimo>(_Esprimo_QNAME, Esprimo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://curso/", name = "Exception")
+    public JAXBElement<Exception> createException(Exception value) {
+        return new JAXBElement<Exception>(_Exception_QNAME, Exception.class, null, value);
     }
 
     /**

@@ -5,6 +5,7 @@
  */
 package testprimows;
 
+import curso.Exception_Exception;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,12 +35,14 @@ public class TestPrimoWS {
                 String es = (primo) ? " es" : " NO es"; 
                 String primoResult = "El número "+ s + es + " primo";                   
                 System.out.println(primoResult);
-                
                 System.out.println("Recuerde: inserte '-1' para salir.");
-
+            } catch ( NumberFormatException e) {
+                System.out.println("Debe introducir un número");
+                System.out.println("Recuerde: inserte '-1' para salir.");
+  
             } catch(Exception e){ 
                 //e.printStackTrace();
-                System.out.println("El número introducido es incorrecto");
+                System.out.println("Error interno: " + e.getMessage());
                 System.out.println("Recuerde: inserte '-1' para salir.");
             }
         }
@@ -47,9 +50,10 @@ public class TestPrimoWS {
         System.out.println("Aplicacion finalizada");
     }
 
-    private static boolean esprimo(java.lang.Long numero) {
+    private static boolean esprimo(java.lang.Long numero) throws Exception_Exception {
         curso.HolaServicio_Service service = new curso.HolaServicio_Service();
         curso.HolaServicio port = service.getHolaServicioPort();
+        
         return port.esprimo(numero);
     }
     
