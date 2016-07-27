@@ -41,7 +41,7 @@ public class TestPrimoWS {
                 long t1 = (new Date()).getTime()-t0;
                 
                 String es = (primo) ? " es" : " NO es"; 
-                String primoResult = "El número "+ s + es + " primo (resultado 1 obtenido en "+ t1 +" ms.)";                   
+                String primoResult = "El número "+ s + es + " primo (resultado 'esprimo' obtenido en "+ t1 +" ms.)";                   
                 System.out.println(primoResult);
                 
                 // Fast??
@@ -54,7 +54,7 @@ public class TestPrimoWS {
                 t1 = (new Date()).getTime()-t0;
                 
                 es = (primo) ? " es" : " NO es"; 
-                primoResult = "El número "+ s + es + " primo (resultado 2 obtenido en "+ t1 +" ms.)";                   
+                primoResult = "El número "+ s + es + " primo (resultado 'esprimoFast' obtenido en "+ t1 +" ms.)";                   
                 System.out.println(primoResult);
                 
                 
@@ -63,14 +63,11 @@ public class TestPrimoWS {
                 System.out.println("Debe introducir un número");
                 System.out.println("Recuerde: inserte '-1' para salir.");
   
-                //Exception_Exception
             } catch ( Exception_Exception e) {
                 System.out.println("Excepción de WS: " + e.getMessage());
                 System.out.println("Recuerde: inserte '-1' para salir.");
   
-                //Exception_Exception
             } catch(Exception e){ 
-                //e.printStackTrace();
                 System.out.println("Error interno: " + e.getMessage());
                 break;
             }
