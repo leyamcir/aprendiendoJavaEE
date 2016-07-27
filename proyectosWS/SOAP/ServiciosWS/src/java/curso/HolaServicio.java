@@ -41,8 +41,12 @@ public class HolaServicio {
         if (numero == null){
             throw new Exception("Debe introducir un número");
         } 
+        
+        if (numero <= 0){
+            throw new Exception("Número " + numero + " inválido");
+        }
             
-        if (numero <= 1) {
+        if (numero == 1) {
             return false;
         }
 
