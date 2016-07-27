@@ -15,7 +15,7 @@ import javax.xml.ws.handler.MessageContext;
 
 /**
  *
- * @author cas
+ * @author Alicia Daza
  */
 @WebService(serviceName = "HolaServicio")
 public class HolaServicio {

@@ -29,8 +29,8 @@ public class TestPrimoWS {
             try{
                 BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                 String s = bufferRead.readLine();
-
                 opcion = Long.parseLong(s);     
+                
                 // Time before call
                 long t0 = (new Date()).getTime();
                 
