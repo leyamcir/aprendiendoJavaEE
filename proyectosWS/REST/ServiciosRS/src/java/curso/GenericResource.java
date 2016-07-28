@@ -8,10 +8,13 @@ package curso;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -37,10 +40,23 @@ public class GenericResource {
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getText() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public String getText(
+        @DefaultValue("") 
+        @QueryParam("codigo") String codigo
+    ) {
+        
+        //return "!Hola curso!";
+        return "Hola. codigo="+codigo;
     }
+    
+    @Path("/{id}")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getId(
+        @PathParam("id") String id) {
+        return "Hola "+id+" !";
+    }
+    
 
     /**
      * PUT method for updating or creating an instance of GenericResource
