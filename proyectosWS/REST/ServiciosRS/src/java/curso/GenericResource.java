@@ -5,6 +5,7 @@
  */
 package curso;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -27,6 +28,7 @@ public class GenericResource {
 
     @Context
     private UriInfo context;
+    //private HttpServletRequest req;
 
     /**
      * Creates a new instance of GenericResource
@@ -49,6 +51,18 @@ public class GenericResource {
         return "Hola. codigo="+codigo;
     }
     
+    @Path("/ipcli")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getIpClient(@Context HttpServletRequest req) {
+        String ipAddress = req.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = req.getRemoteAddr();
+        }
+        return "ipAddress:" + ipAddress;
+    }
+    
+    
     @Path("/{id}")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -56,7 +70,6 @@ public class GenericResource {
         @PathParam("id") String id) {
         return "Hola "+id+" !";
     }
-    
 
     /**
      * PUT method for updating or creating an instance of GenericResource
