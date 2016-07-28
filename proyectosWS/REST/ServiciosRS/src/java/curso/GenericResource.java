@@ -5,6 +5,8 @@
  */
 package curso;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -63,12 +65,33 @@ public class GenericResource {
     }
     
     
+    @Path("/getjson")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJson() {
+        String json = "{\"Hola\": \"Curso\"}";
+        return json;
+    }
+    /*
     @Path("/{id}")
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getId(
         @PathParam("id") String id) {
-        return "Hola "+id+" !";
+        String json = "{\"Hola\": \""+id+"\"}";
+        return json;
+    }
+    */
+    
+    @Path("/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonObject getId(
+        @PathParam("id") String id) {
+        JsonObject json = Json.createObjectBuilder()
+                .add("Hola", id)
+                .build();
+        return json;
     }
 
     /**
@@ -77,6 +100,7 @@ public class GenericResource {
      */
     @PUT
     @Consumes(MediaType.TEXT_PLAIN)
-    public void putText(String content) {
+    public String putText(String content) {
+        return content;
     }
 }
