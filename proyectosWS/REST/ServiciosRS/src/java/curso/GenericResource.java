@@ -100,6 +100,7 @@ public class GenericResource {
      */
     @PUT
     @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
     public String putText(String content) {
         return content;
     }
