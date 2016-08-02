@@ -148,6 +148,11 @@
           else
               consolediv.style.visibility = 'hidden';
       }
+      
+      /*wsocket.on('close', function(reasonCode, description) {
+            console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
+        });*/
+      
       /* Call connect() when the page first loads */
       window.addEventListener("load", connect, false);
   </script>

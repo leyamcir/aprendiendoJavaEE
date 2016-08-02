@@ -19,27 +19,34 @@ import javaeetutorial.web.websocketbot.decoders.MessageDecoder;
 import javaeetutorial.web.websocketbot.messages.Message;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.inject.Inject;
+import javax.websocket.CloseReason;
 import javax.websocket.EncodeException;
+import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
+import javax.websocket.server.HandshakeRequest;
 import javax.websocket.server.ServerEndpoint;
 
 /* Websocket endpoint */
 @ServerEndpoint(
         value = "/websocketbot",
+        configurator = CustomConfigurator.class,
         decoders = { MessageDecoder.class }, 
         encoders = { JoinMessageEncoder.class, ChatMessageEncoder.class, 
                      InfoMessageEncoder.class, UsersMessageEncoder.class }
-        )
+    )
 /* There is a BotEndpoint instance per connetion */
 public class BotEndpoint {
     private static final Logger logger = Logger.getLogger("BotEndpoint");
@@ -51,8 +58,25 @@ public class BotEndpoint {
     private ManagedExecutorService mes;
     
     @OnOpen
-    public void openConnection(Session session) {
+    public void openConnection(Session session, EndpointConfig conf) {
         logger.log(Level.INFO, "Connection opened.");
+        HandshakeRequest req = (HandshakeRequest) conf.getUserProperties()
+                                        .get("handshakereq");
+        
+        Map<String,List<String>> headers = req.getHeaders();
+        Iterator it = headers.entrySet().iterator();
+        
+        while (it.hasNext()){
+            Map.Entry pair = (Map.Entry)it.next();
+            logger.log(Level.INFO, "HEADERS: "+pair.getKey() + " = " + pair.getValue());
+            
+            if (pair.getKey().equals("host")){
+                logger.log(Level.INFO, "HEADER HOST: "+pair.getKey() + " = " + pair.getValue());
+            } else if (pair.getKey().equals("origin")){
+                logger.log(Level.INFO, "HEADER ORIGIN: "+pair.getKey() + " = " + pair.getValue());
+            }
+        }
+        
     }
     
     @OnMessage
@@ -86,6 +110,8 @@ public class BotEndpoint {
                                 cmsg.getName(), resp));
                     }
                 });
+            } else if (cmsg.toString().contains("hola")) {
+                banUser(session, cmsg.getName(), cmsg.getMessage());
             }
         }
     }
@@ -131,5 +157,29 @@ public class BotEndpoint {
                 users.add(s.getUserProperties().get("name").toString());
         }
         return users;
+    }
+    
+    /* Ban user when some word is used */
+    public void banUser (final Session session, String name, String msg){
+        
+        //Set<Session> sessions = session.getOpenSessions();
+        // Search user in sessions
+        
+        if (session.isOpen()){
+            session.getUserProperties().put("active", false);
+            sendAll(session, new UsersMessage(this.getUserList(session)));
+            sendAll(session, new InfoMessage(name + " has been banned after writing this: " + msg));
+        
+            try {
+                CloseReason reason = new CloseReason(CloseReason.CloseCodes.VIOLATED_POLICY, "Forbidden word used");
+                session.close(reason);
+
+            } catch (IOException e) {
+                logger.log(Level.INFO, e.toString());
+            } 
+        }
+        
+         
+        
     }
 }
