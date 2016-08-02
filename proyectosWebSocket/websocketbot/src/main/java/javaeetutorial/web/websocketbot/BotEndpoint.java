@@ -122,6 +122,7 @@ public class BotEndpoint {
         session.getUserProperties().put("active", false);
         if (session.getUserProperties().containsKey("name")) {
             String name = session.getUserProperties().get("name").toString();
+            //if() // Not show twice on ban
             sendAll(session, new InfoMessage(name + " has left the chat"));
             sendAll(session, new UsersMessage(this.getUserList(session)));
         }
